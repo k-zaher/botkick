@@ -5,6 +5,7 @@ module Botkick::Base::Bot
   end
 
   module ClassMethods
+
 		def start!
 			p "starting"
 		end
@@ -18,6 +19,11 @@ module Botkick::Base::Bot
 			end
 			klass.new
 		end
+
+  	def inherited(subclass)
+  		subclass.instance_eval { undef :reply! }
+  		subclass.instance_eval { undef :start! }
+  	end
 
   end
 
