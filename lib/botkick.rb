@@ -1,5 +1,11 @@
 require "botkick/version"
 
+
 module Botkick
-  # Your code goes here...
+  module Base
+		require "botkick/base/bot"
+  end
+
+  require "botkick/riseup"
+  require "botkick/riseup/welcome"
 end

@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "botkick"
+
+riseup = Botkick::Riseup.start!
+
+
+welcome = Botkick::Riseup.reply!("Welcome")
+
+welcome.prepare_data
