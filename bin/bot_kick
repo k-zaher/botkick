@@ -3,9 +3,10 @@
 require "bundler/setup"
 require "botkick"
 
-riseup = Botkick::Riseup.start!
+
+# riseup = Botkick::Riseup.start!
 
 
-welcome = Botkick::Riseup.reply!("Welcome")
+# welcome = Botkick::Riseup.reply!("Welcome")
 
-welcome.prepare_data
+# welcome.prepare_data

@@ -1,0 +1,11 @@
+welcome:
+  message: 
+    attachment:
+      type: template
+      payload:
+        template_type: button
+        text:
+        buttons:
+          - title:
+            payload:
+            type:

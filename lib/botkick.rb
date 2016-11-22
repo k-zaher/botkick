@@ -1,11 +1,9 @@
 require "botkick/version"
-
+require "yaml"
+require 'botkick/railtie' if defined?(Rails)
 
 module Botkick
   module Base
 		require "botkick/base/bot"
   end
-
-  require "botkick/riseup"
-  require "botkick/riseup/welcome"
 end
