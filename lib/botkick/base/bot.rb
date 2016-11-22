@@ -10,7 +10,12 @@ module Botkick::Base::Bot
 		end
 
 		def reply!(payload)
-			klass = Object.const_get "#{self.name}::#{payload}"
+			parent = self.name.gsub("Bot","")
+			if Object.const_defined?("#{parent}::Node::#{payload}")
+				klass = Object.const_get "#{parent}::Node::#{payload}"
+			else
+				klass = Class.new(self)
+			end
 			klass.new
 		end
 
@@ -18,7 +23,7 @@ module Botkick::Base::Bot
 
 
 	def prepare_data
-		p "Preparing"
+		p "Preparing #{self.class}"
 	end
 
 	def execute!

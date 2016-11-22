@@ -16,9 +16,9 @@ module Botkick
       def create_node_file
         return puts   "Err:--------------  Nested Nodes is not supported" if class_path.length > 1
         return puts   "Err:--------------  #{class_path[0]} does not exist" unless File.exist?("app/bots/#{class_path[0]}_bot.rb")
-        template "messenger/#{@options["view"]}.yml.erb", File.join('app/bots', "#{class_path[0]}/#{file_name}", "#{file_name}_bot.yml")
+        template "messenger/#{@options["view"]}.yml.erb", File.join('app/bots', "#{class_path[0]}/template", "#{file_name}_bot.yml")
         if @options["override"] == true
-          template 'node.rb.erb', File.join('app/bots', "#{class_path[0]}/#{file_name}", "#{file_name}_bot.rb")
+          template 'node.rb.erb', File.join('app/bots', "#{class_path[0]}/node", "#{file_name}.rb")
         end
         
       end
@@ -33,9 +33,9 @@ module Botkick
         template_file = File.join(
             'spec/bots',
             "#{class_path[0]}/#{file_name}",
-            "#{file_name}_bot_spec.rb"
+            "#{file_name}_spec.rb"
         )
-        template 'bot_spec.rb.erb', template_file
+        template 'node_spec.rb.erb', template_file
       end
     end
   end

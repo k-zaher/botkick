@@ -1,4 +1,4 @@
-class Botkick::Riseup
+class RiseupBot
 
 	include Botkick::Base::Bot
 

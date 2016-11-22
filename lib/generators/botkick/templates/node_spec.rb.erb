@@ -1,6 +1,6 @@
 require 'rails_helper'
 <% module_namespacing do -%>
-RSpec.describe Botkick::<%= class_name %>, type: :bot do
+RSpec.describe <%=class_path[0].capitalize%>::Node::<%=file_name.capitalize%> do
     pending "add some examples to (or delete) #{__FILE__}"
 end
 <% end -%>
