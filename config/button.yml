@@ -2,7 +2,7 @@
   text:
   buttons:
     - title:
-      type: postback
+      type:
       webview_height_ratio:
       url:
       fallback_url:
@@ -13,7 +13,7 @@
   text:
   buttons:
     - title:
-      type: postback
+      type:
       webview_height_ratio:
       url:
       fallback_url:

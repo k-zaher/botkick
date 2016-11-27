@@ -4,25 +4,35 @@ module Serializers
 
 		module Element
 
-			def export_all(elements)
-				elements.each do |e|
-					export(e)
+			class << self
+
+				def import_all(elements)
+					elements.map {|e| import(e)}
+				end
+
+				def export_all(elements)
+					elements.map {|e| export(e)}
+				end
+
+				private
+
+				def export(element)
+			    {
+			      title:     element.data["title"],
+			      price:     element.data["price"],
+			      quantity:  element.data["quantity"],
+			      subtitle:  element.data["subtitle"],
+			      currency:  element.data["currency"],
+			      image_url: element.data["image_url"]
+			    }
+				end
+
+				def import(element_data)
+					element      = Botkick::Element.new 
+			    element.data = element_data["data"]
+			    element
 				end
 			end
-
-			private
-
-			def export(element)
-		    {
-		      title:     element[:title],
-		      price:     element[:price],
-		      quantity:  element[:quantity],
-		      subtitle:  element[:subtitle],
-		      currency:  element[:currency],
-		      image_url: element[:image_url]
-		    }
-			end
-
 		end
 
 	end

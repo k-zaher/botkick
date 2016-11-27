@@ -1,4 +1,5 @@
 module Botkick::Base::Bot
+	include Serializers
 
   def self.included(base)
     base.send :extend, ClassMethods
@@ -28,8 +29,8 @@ module Botkick::Base::Bot
   end
 
 
-	def prepare_data
-		p "Preparing #{self.class}"
+	def prepare_data(data)
+		p import(data)
 	end
 
 	def execute!

@@ -1,5 +1,4 @@
-<% module_namespacing do -%>
-generic: 
+- template_type: "generic" 
   elements:
     - title:
       url:
@@ -14,4 +13,3 @@ generic:
           payload:
             intent: 
             custom_data:
-<% end -%>

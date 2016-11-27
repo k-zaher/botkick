@@ -4,22 +4,37 @@ module Serializers
 
 		module Element
 
-			def export_all(elements)
-				elements.each do |e|
-					export(e)
+			class << self
+
+				def import_all(elements_data)
+					elements_data.map{|e| import(e)}
 				end
-			end
 
-			private
+				def export_all(elements)
+					elements.map{|e| export(e) }
+				end
 
-			def export(element)
-				buttons = Serializers::Shared::Button.export_all(element[:buttons])
-		    attachment =     {
-		      title:      element[:title],
-		      buttons:    buttons,
-		      subtitle:   element[:subtitle],
-		      image_url:  element[:image_url],
-		    }
+				private
+
+				def export(element)
+					buttons = Serializers::Shared::Button.export_all(element.buttons)
+			    attachment =     {
+			      title:      element.title,
+			      buttons:    buttons,
+			      subtitle:   element.subtitle,
+			      image_url:  element.image_url,
+			    }
+				end
+
+				def import(data)
+					element           = Botkick::Element.new
+					element.title     = data["title"]
+					element.subtitle  = data["subtitle"]
+					element.image_url = data["image_url"]
+					element.buttons   = Serializers::Shared::Button.import_all(data["buttons"])
+					element
+				end
+
 			end
 
 		end
