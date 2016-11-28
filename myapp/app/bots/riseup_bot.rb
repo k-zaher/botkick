@@ -1,5 +1,8 @@
-class RiseupBot
+class RiseupBot < Botkick::Base::Bot
 
-	include Botkick::Base::Bot
+  extend Botkick::Manager
+
+  def execute!
+  end
 
 end

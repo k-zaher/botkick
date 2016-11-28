@@ -1,39 +1,22 @@
-module Botkick::Base::Bot
-	include Serializers
+module Botkick
+  module Base
+    class Bot
+      include Botkick::Serializer
+      include Botkick::YamlLoader
 
-  def self.included(base)
-    base.send :extend, ClassMethods
+      attr_accessor :templates
+
+      def initialize
+        @templates = prepare_data
+      end
+
+    	def prepare_data
+    		import(parse_yaml)
+    	end
+
+    	def execute!
+    		p "Execute"
+    	end
+    end
   end
-
-  module ClassMethods
-
-		def start!
-			p "starting"
-		end
-
-		def reply!(payload)
-			parent = self.name.gsub("Bot","")
-			if Object.const_defined?("#{parent}::Node::#{payload}")
-				klass = Object.const_get "#{parent}::Node::#{payload}"
-			else
-				klass = Class.new(self)
-			end
-			klass.new
-		end
-
-  	def inherited(subclass)
-  		subclass.instance_eval { undef :reply! }
-  		subclass.instance_eval { undef :start! }
-  	end
-
-  end
-
-
-	def prepare_data(data)
-		p import(data)
-	end
-
-	def execute!
-		p "Execute"
-	end
 end

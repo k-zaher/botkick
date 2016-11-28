@@ -1,7 +1,8 @@
 require "botkick/version"
-require "yaml"
 require "botkick/template"
-require "serializers"
+require "botkick/manager"
+require "botkick/serializer"
+require "botkick/yaml_loader"
 require 'botkick/railtie' if defined?(Rails)
 
 module Botkick
