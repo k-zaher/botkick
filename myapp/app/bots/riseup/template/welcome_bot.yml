@@ -7,7 +7,7 @@
       url:
       fallback_url:
       payload:
-        intent: 
+        target_node: 
         custom_data:
 - template_type: "button"
   text:
@@ -18,5 +18,5 @@
       url:
       fallback_url:
       payload:
-        intent: 
+        target_node: 
         custom_data:

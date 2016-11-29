@@ -23,14 +23,14 @@ module Botkick
         raise "NodeInvalid"
     end
 
-    def reply!(payload)
-      parent = self.name.gsub("Bot","")
-      if Object.const_defined?("#{parent}::Node::#{payload}")
-        klass = Object.const_get "#{parent}::Node::#{payload}"
+    def reply!(payload_string)
+      target_node, custom_data = Botkick::Payload.parse(payload_string)
+      if Object.const_defined?(target_node)
+        klass = Object.const_get target_node
       else
-        klass = Class.new(self)
+        raise 'Target Node Not Found !!'
       end
-      klass.new
+      klass.new(custom_data: custom_data)
     end
   end
 end

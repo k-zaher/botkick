@@ -4,7 +4,7 @@ module Botkick
       include Botkick::Serializer
       include Botkick::YamlLoader
 
-      attr_accessor :templates
+      attr_accessor :templates, :custom_data
 
       def initialize
         @templates = prepare_data
