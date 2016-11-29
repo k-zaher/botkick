@@ -1,4 +1,4 @@
-module MBotBuilder
-  class MBotBuilder < Rails::Railtie
+module Botkick
+  class Botkick < Rails::Railtie
   end
 end

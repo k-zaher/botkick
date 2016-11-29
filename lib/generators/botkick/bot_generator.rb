@@ -3,7 +3,6 @@ require 'rails/generators/named_base'
 module Botkick
   module Generators # :nodoc:
     class BotGenerator < ::Rails::Generators::NamedBase # :nodoc:
-
       desc 'This generator creates a Bot in app/bots and a corresponding test'
 
       check_class_collision suffix: 'Bot'
@@ -13,7 +12,11 @@ module Botkick
       end
 
       def create_bot_file
-        template 'bot.rb.erb', File.join('app/bots', class_path, "#{file_name}_bot.rb")
+        template_file = File.join(
+          'app/bots', class_path,
+          "#{file_name}_bot.rb"
+        )
+        template 'bot.rb.erb', template_file
       end
 
       def create_test_file
@@ -24,9 +27,9 @@ module Botkick
 
       def create_bot_test
         template_file = File.join(
-            'spec/bots',
-            class_path,
-            "#{file_name}_bot_spec.rb"
+          'spec/bots',
+          class_path,
+          "#{file_name}_bot_spec.rb"
         )
         template 'bot_spec.rb.erb', template_file
       end

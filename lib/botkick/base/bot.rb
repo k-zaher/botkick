@@ -1,8 +1,9 @@
 module Botkick
   module Base
+    # Base Bot class that all bots and nodes will inherit from
     class Bot
-      include Botkick::Serializer
-      include Botkick::YamlLoader
+      include Serializer
+      include YamlLoader
 
       attr_accessor :templates, :custom_data
 
@@ -10,13 +11,13 @@ module Botkick
         @templates = prepare_data
       end
 
-    	def prepare_data
-    		import(parse_yaml)
-    	end
+      def prepare_data
+        import(parse_yaml)
+      end
 
-    	def execute
-        @templates.map{|t| t.export}
-    	end
+      def execute
+        @templates.map(&:export)
+      end
     end
   end
 end
