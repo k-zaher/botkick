@@ -1,7 +1,9 @@
 <% module_namespacing do -%>
-class <%= class_name %>Bot
+class <%= class_name %>Bot < Botkick::Base::Bot
 
-	include Botkick::Base::Bot
+	extend Botkick::Manager
+
+  define_starter :welcome
 
 end
 <% end -%>

@@ -1,4 +1,4 @@
 <% module_namespacing do -%>
-class <%=class_path[0].capitalize%>::Node::<%=file_name.capitalize%> < <%=class_path[0].capitalize%>Bot
+class <%=class_path[0].split("_").map(&:capitalize).join%>Bot::Node::<%=file_name.split("_").map(&:capitalize).join%> < <%=class_path[0].split("_").map(&:capitalize).join%>Bot
 end
 <% end -%>

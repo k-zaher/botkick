@@ -13,8 +13,8 @@ module Botkick
     end
 
     def start!
-      bot_klass_name = self.name.gsub("Bot","")
-      node_klass = Object.const_get "#{bot_klass_name}::Node::#{@@starting_node.to_s.capitalize}"
+      bot_klass_name = self.name
+      node_klass = Object.const_get "#{bot_klass_name}::Node::#{@@starting_node.to_s.split("_").map(&:capitalize).join}"
       node = node_klass.new
       node.execute
       rescue NameError => e

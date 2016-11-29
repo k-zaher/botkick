@@ -12,7 +12,10 @@ module Botkick
 					end
 
 					def export_all(buttons)
-						buttons.map{|b| send(b.type, b)}
+						buttons.map do |b|
+					 		raise "Button type must be either [web_url, postback]" unless b.type
+					 		send(b.type, b)
+					 	end
 					end
 
 					private

@@ -11,7 +11,7 @@ module Botkick
     end
 
     def locate_yaml
-      "app/bots/#{to_underscore[0]}/template/#{to_underscore[-1]}_bot.yml"
+      "app/bots/#{to_underscore[0]}/template/#{to_underscore[-1]}.yml"
     end
 
 
