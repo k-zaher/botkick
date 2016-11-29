@@ -1,8 +1,6 @@
 module Botkick
   # Bot Starter Module
   module Manager
-    mattr_accessor :starting_node
-
     def inherited(subclass)
       subclass.instance_eval { undef :reply! }
       subclass.instance_eval { undef :start! }

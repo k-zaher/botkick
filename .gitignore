@@ -9,6 +9,7 @@
 /spec/reports/
 /tmp/
 =======
+coverage
 *.gem
 *.rbc
 /.config
