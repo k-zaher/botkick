@@ -2,7 +2,6 @@ class RiseupBot < Botkick::Base::Bot
 
   extend Botkick::Manager
 
-  def execute!
-  end
+  define_starter :welcome
 
 end

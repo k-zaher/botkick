@@ -14,8 +14,8 @@ module Botkick
     		import(parse_yaml)
     	end
 
-    	def execute!
-    		p "Execute"
+    	def execute
+        @templates.map{|t| t.export}
     	end
     end
   end
