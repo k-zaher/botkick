@@ -10,6 +10,10 @@ module Botkick
       @starting_node = node
     end
 
+    def starting_node
+      @starting_node
+    end
+
     def start!
       node = Object.const_get("#{name}::Node::"\
       "#{@starting_node.to_s.split('_').map(&:capitalize).join}").new
@@ -22,9 +26,10 @@ module Botkick
 
     def reply!(payload_string)
       target_node, custom_data = Botkick::Payload.parse(payload_string)
-      raise 'Target Node Not Found !!' unless Object.const_defined?(target_node)
+      raise 'NodeInvalid' unless Object.const_defined?(target_node)
       klass = Object.const_get target_node
-      klass.new(custom_data: custom_data)
+      node = klass.new(custom_data)
+      node.execute
     end
   end
 end

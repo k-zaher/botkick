@@ -4,13 +4,17 @@ describe Botkick::YamlLoader do
   before(:all) do
     @klass = Object.const_set('ClassName', Class.new)
     @klass.send :include, Botkick::YamlLoader
+    @klass1 = Object.const_set('Test', Class.new)
+    @klass1.send :include, Botkick::YamlLoader
     @obj = @klass.new
+    @obj1 = @klass1.new
   end
 
   describe '.to_underscore' do
     it 'should make an underscored,'\
       'lowercase form from the expression in the string' do
       expect(@obj.to_underscore).to eql ['class_name']
+      expect(@obj1.to_underscore).to eql ['test']
     end
   end
 
@@ -22,37 +26,13 @@ describe Botkick::YamlLoader do
   end
 
   describe '.parse_yaml' do
+    include_context 'yaml_parser'
     before do
-      allow(@obj).to receive(:locate_yaml) { 'spec/seed/button.yml' }
+      overwrite_loader(@klass)
     end
     it 'Should parse the located yml' do
       expect(@obj.parse_yaml).to eql(
-        [
-          {
-            'template_type' => 'button',
-            'text' => nil,
-            'buttons' => [
-              {
-                'title' => nil,
-                'type' => 'postback', 'webview_height_ratio' => nil,
-                'url' => nil, 'fallback_url' => nil,
-                'payload' => { 'target_node' => nil, 'custom_data' => nil }
-              }
-            ]
-          },
-          {
-            'template_type' => 'button',
-            'text' => nil,
-            'buttons' => [
-              {
-                'title' => nil,
-                'type' => 'postback', 'webview_height_ratio' => nil,
-                'url' => nil, 'fallback_url' => nil,
-                'payload' => { 'target_node' => nil, 'custom_data' => nil }
-              }
-            ]
-          }
-        ]
+        parsed_yaml
       )
     end
   end

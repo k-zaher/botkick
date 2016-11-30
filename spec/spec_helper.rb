@@ -4,3 +4,4 @@ require 'simplecov'
 SimpleCov.start
 
 require 'botkick'
+require 'support/yaml_parser'

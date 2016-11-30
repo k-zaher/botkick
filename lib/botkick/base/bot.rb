@@ -7,8 +7,9 @@ module Botkick
 
       attr_accessor :templates, :custom_data
 
-      def initialize
+      def initialize(custom_data = nil)
         @templates = prepare_data
+        @custom_data = custom_data
       end
 
       def prepare_data
