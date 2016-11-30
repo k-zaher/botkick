@@ -1,34 +1,58 @@
 # Botkick
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/botkick`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+**Botkick** provides a skeleton for building chat bots on top of internal and external chat services. It:
 
-## Installation
+- Currently supports only **Facebook Messenger**.
+- Allows chaining multiple bots.
+- Allows you to Build static bots with few commands.
+- Gives you Full control for adding dynamic data to your bots.
 
-Add this line to your application's Gemfile:
+It's composed the following components:
 
-```ruby
-gem 'botkick'
-```
+- **Serilaizers** modules that parse your static bot data. And serialize the final data to the format required by the chat service.
+- **Template** Class stores the static bot data, and gives you control to edit its child components (buttons, text, etc...)
+- **Node** module represents every step of your bot, it is aware about the **custom data** you sent in the previous node. It is also the place were you can add dynamic data to the attachments you send.
 
-And then execute:
+## Getting Started
+Botkick **v0.0.1** works with Rails 4.1 onwards, you can add it to the Gemfile with
 
-    $ bundle
+	gem 'botkick', :git => 'git://github.com/kimooz/botkick.git', :tag => 'v0.0.1'
 
-Or install it yourself as:
 
-    $ gem install botkick
+Then run `bundle install`
+ 
+## Create you first bot
+ 
+First you need to run the generator for initializing your bot
 
-## Usage
+	rails g botkick:bot first_bot
+ 
+Then lets start creating the first node, for example: a welcome message.
 
-TODO: Write usage instructions here
+	rails g botkick:node first_bot/welcome -view type
+	
+(Template) type  | Source 
+-------------- | ----------- 
+generic        | [Genertic Template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template)
+receipt        | [Receipt Template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/receipt-template)
+button         | [Button Template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template)
+text           | [Text Template](https://developers.facebook.com/docs/messenger-platform/send-api-reference/text-message)
 
-## Development
+**Welcome Node** can have multiple templates, if at a certain level of the bot triggers multiple messages. You can simply generate them by:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+	rails g botkick:node first_bot/welcome -view type_1, type_2
+	
+## TODO
+- Add examples to generators output, and how to use them
+- Add use case for merging dynamic data
+- Explaining the flow from a high level
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Missing Features
+
+- Support Another chat services.
+- Grouping logic of a certain bot with multiple chat services
 
 ## Contributing
 
