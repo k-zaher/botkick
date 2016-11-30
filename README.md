@@ -1,5 +1,6 @@
 # Botkick
 
+[![Code Climate](https://codeclimate.com/github/kimooz/botkick/badges/gpa.svg)](https://codeclimate.com/github/kimooz/botkick)
 
 **Botkick** provides a skeleton for building chat bots on top of internal and external chat services. It:
 
