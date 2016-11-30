@@ -1,0 +1,13 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.2.2
+before_install: gem install bundler -v 1.13.5
+
+notifications:
+  email:
+    recipients:
+      - kareem.diaa@gmail.com
+      - mohamed.diaa27@gmail.com
+    on_failure: change
+    on_success: never
