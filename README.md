@@ -42,7 +42,7 @@ text           | [Text Template](https://developers.facebook.com/docs/messenger-
 
 **Welcome Node** can have multiple templates, if at a certain level of the bot triggers multiple messages. You can simply generate them by:
 
-	rails g botkick:node first_bot/welcome -view type_1, type_2
+	rails g botkick:node first_bot/welcome -view type_1 type_2
 	
 ## TODO
 - Add examples to generators output, and how to use them
