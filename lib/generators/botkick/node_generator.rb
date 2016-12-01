@@ -8,7 +8,7 @@ module Botkick
         :view,
         aliases: '-v',
         type: :array,
-        default: 'generic', desc: 'create a yml'
+        desc: 'create a yml'
       )
 
       desc 'This generator creates a node under a bot a its corresponding test'
