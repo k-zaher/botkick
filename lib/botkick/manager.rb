@@ -18,10 +18,10 @@ module Botkick
       node = Object.const_get("#{name}::Node::"\
       "#{@starting_node.to_s.split('_').map(&:capitalize).join}").new
       node.execute
-    rescue NameError
-      p 'Try Running rails g botkick:node '\
-      "#{name.downcase}/#{@starting_node} to create the node class"
-      raise 'NodeInvalid'
+    # rescue NameError
+    #   p 'Try Running rails g botkick:node '\
+    #   "#{name.downcase}/#{@starting_node} to create the node class"
+    #   raise 'NodeInvalid'
     end
 
     def reply!(payload_string)

@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    botkick (0.0.2)
+    botkick (0.0.5)
 
 GEM
   remote: https://rubygems.org/

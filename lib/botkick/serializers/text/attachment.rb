@@ -8,6 +8,7 @@ module Botkick
             template         = Template.new
             template.type    = :text
             template.title   = node['title']
+            template.serializer = self
             template
           end
 
