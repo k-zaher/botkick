@@ -1,4 +1,5 @@
 require 'rails/generators/named_base'
+require 'fileutils'
 
 module Botkick
   module Generators # :nodoc:
@@ -22,7 +23,11 @@ module Botkick
         views = @options['view']
         raise 'Nested Nodes is not supported' if class_path.length > 1
         raise '#{bot_name} does not exist' unless File.exist?(bot_file)
-        new_file = File.open(yml_file(bot_name), "w+")
+        dirname = "app/bots/#{bot_name}_bot/template"
+        unless File.directory?(dirname)
+          FileUtils.mkdir_p(dirname)
+        end
+        new_file = File.open(yml_file(bot_name), "w")
         views.each do |view|
           template = File.read(File.dirname(__FILE__) + "/templates/messenger/#{view}.yml.erb")
           new_file << ERB.new(template).result
