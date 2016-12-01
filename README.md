@@ -18,7 +18,7 @@ It's composed the following components:
 ## Getting Started
 Botkick **v0.0.1** works with Rails 4.1 onwards, you can add it to the Gemfile with
 
-	gem 'botkick', :git => 'git://github.com/kimooz/botkick.git', :tag => 'v0.0.1'
+	gem 'botkick', :git => 'git://github.com/kimooz/botkick.git', :tag => '0.0.1'
 
 
 Then run `bundle install`
