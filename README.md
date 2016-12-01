@@ -16,9 +16,9 @@ It's composed the following components:
 - **Node** module represents every step of your bot, it is aware about the **custom data** you sent in the previous node. It is also the place were you can add dynamic data to the attachments you send.
 
 ## Getting Started
-Botkick **v0.0.1** works with Rails 4.1 onwards, you can add it to the Gemfile with
+Botkick works with Rails 4.1 onwards, you can add it to the Gemfile with
 
-	gem 'botkick', :git => 'git://github.com/kimooz/botkick.git', :tag => '0.0.1'
+	gem 'botkick', :git => 'git://github.com/kimooz/botkick.git'
 
 
 Then run `bundle install`
