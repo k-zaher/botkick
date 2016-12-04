@@ -14,9 +14,9 @@ module Botkick
       @starting_node
     end
 
-    def start!
+    def start!(system_data = {})
       node = Object.const_get("#{name}::Node::"\
-      "#{@starting_node.to_s.split('_').map(&:capitalize).join}").new
+      "#{@starting_node.to_s.split('_').map(&:capitalize).join}").new(system_data)
       node.execute
     # rescue NameError
     #   p 'Try Running rails g botkick:node '\
@@ -24,11 +24,11 @@ module Botkick
     #   raise 'NodeInvalid'
     end
 
-    def reply!(payload_string)
+    def reply!(system_data = {}, payload_string)
       target_node, custom_data = Botkick::Payload.parse(payload_string)
       raise 'NodeInvalid' unless Object.const_defined?(target_node)
       klass = Object.const_get target_node
-      node = klass.new(custom_data)
+      node = klass.new(custom_data, system_data)
       node.execute
     end
   end

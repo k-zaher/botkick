@@ -14,7 +14,7 @@ module Botkick
 
           def export(data)
             {
-              text: data[:title]
+              text: data.title
             }
           end
         end
