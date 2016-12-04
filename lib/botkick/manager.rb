@@ -16,15 +16,16 @@ module Botkick
 
     def start!(system_data = {})
       node = Object.const_get("#{name}::Node::"\
-      "#{@starting_node.to_s.split('_').map(&:capitalize).join}").new(system_data)
+      "#{@starting_node.to_s.split('_').map(&:capitalize).join}")
+                   .new(system_data)
       node.execute
-    # rescue NameError
-    #   p 'Try Running rails g botkick:node '\
-    #   "#{name.downcase}/#{@starting_node} to create the node class"
-    #   raise 'NodeInvalid'
+    rescue NameError
+      p 'Try Running rails g botkick:node '\
+      "#{name.downcase}/#{@starting_node} to create the node class"
+      raise 'NodeInvalid'
     end
 
-    def reply!(system_data = {}, payload_string)
+    def reply!(payload_string, system_data = {})
       target_node, payload_data = Botkick::Payload.parse(payload_string)
       raise 'NodeInvalid' unless Object.const_defined?(target_node)
       klass = Object.const_get target_node
