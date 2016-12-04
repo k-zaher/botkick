@@ -43,7 +43,7 @@ describe Botkick::Manager do
     context 'When target node is defined' do
       before(:all) do
         @input = { 'target_node': 'TestModuleBot::Node::Welcome',
-                   'custom_data':
+                   'payload_data':
                     {
                       'user_id': '1', 'user_name': 'Tester'
                     } }.to_json

@@ -9,7 +9,7 @@ shared_context 'yaml_parser' do
             'title' => nil,
             'type' => 'postback', 'webview_height_ratio' => nil,
             'url' => nil, 'fallback_url' => nil,
-            'payload' => { 'target_node' => nil, 'custom_data' => nil }
+            'payload' => { 'target_node' => nil, 'payload_data' => nil }
           }
         ]
       },
@@ -21,7 +21,7 @@ shared_context 'yaml_parser' do
             'title' => nil,
             'type' => 'postback', 'webview_height_ratio' => nil,
             'url' => nil, 'fallback_url' => nil,
-            'payload' => { 'target_node' => nil, 'custom_data' => nil }
+            'payload' => { 'target_node' => nil, 'payload_data' => nil }
           }
         ]
       }
@@ -41,7 +41,7 @@ shared_context 'yaml_parser' do
                 title: nil,
                 payload: {
                   'target_node' => nil,
-                  'custom_data' => nil
+                  'payload_data' => nil
                 }
               }
             ],
@@ -60,7 +60,7 @@ shared_context 'yaml_parser' do
                 title: nil,
                 payload: {
                   'target_node' => nil,
-                  'custom_data' => nil
+                  'payload_data' => nil
                 }
               }
             ],

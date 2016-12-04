@@ -5,12 +5,12 @@ module Botkick
       include Serializer
       include YamlLoader
 
-      attr_accessor :templates, :custom_data, :system_data
+      attr_accessor :templates, :payload_data, :system_data
 
-      def initialize(system_data = {}, custom_data = nil)
-        @templates   = prepare_data
-        @custom_data = custom_data
-        @system_data = system_data
+      def initialize(system_data = {}, payload_data = nil)
+        @templates    = prepare_data
+        @payload_data = payload_data
+        @system_data  = system_data
         after_prepare
       end
 

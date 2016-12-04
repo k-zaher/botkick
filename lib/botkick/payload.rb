@@ -6,7 +6,7 @@ module Botkick
     class << self
       def parse(payload_string)
         parsed_payload = JSON.parse payload_string
-        [parsed_payload['target_node'], parsed_payload['custom_data']]
+        [parsed_payload['target_node'], parsed_payload['payload_data']]
       end
     end
   end

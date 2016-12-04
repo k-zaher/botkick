@@ -4,7 +4,7 @@ describe Botkick::Payload do
   describe '.parse' do
     before do
       @input = { 'target_node': 'Welcome',
-                 'custom_data':
+                 'payload_data':
                   {
                     'user_id': '1', 'user_name': 'Tester'
                   } }.to_json

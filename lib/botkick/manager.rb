@@ -25,10 +25,10 @@ module Botkick
     end
 
     def reply!(system_data = {}, payload_string)
-      target_node, custom_data = Botkick::Payload.parse(payload_string)
+      target_node, payload_data = Botkick::Payload.parse(payload_string)
       raise 'NodeInvalid' unless Object.const_defined?(target_node)
       klass = Object.const_get target_node
-      node = klass.new(custom_data, system_data)
+      node = klass.new(system_data, payload_data)
       node.execute
     end
   end
