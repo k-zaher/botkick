@@ -5,7 +5,7 @@ module Botkick
       include Serializer
       include YamlLoader
 
-      attr_accessor :templates, :payload_data, :system_data
+      attr_accessor :templates, :payload_data, :system_data, :serialized_templates
 
       def initialize(system_data = {}, payload_data = nil)
         @templates    = prepare_data
@@ -23,7 +23,12 @@ module Botkick
       end
 
       def execute
-        @templates.map(&:export)
+        @serialized_templates = @templates.map(&:export)
+        after_execute
+      end
+
+      def after_execute
+        ## To Be Overridden for sending and saving
       end
     end
   end

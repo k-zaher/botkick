@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'botkick'
   spec.version       = Botkick::VERSION
   spec.authors       = ['Kareem Diaa', 'Mohamed Diaa']
-  spec.email         = ['kareem.diaa@gmail.com']
+  spec.email         = ['kareem.diaa@gmail.com', 'mohamed.diaa27@gmail.com']
   spec.summary       = 'FB Messenger Bot Generator'
   spec.description   = 'FB Messenger Bot Generator'
   spec.homepage      = 'https://github.com/kimooz/botkick'
