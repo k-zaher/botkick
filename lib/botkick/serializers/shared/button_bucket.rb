@@ -35,7 +35,7 @@ module Botkick
             {
               type:    'postback',
               title:   button.title,
-              payload: button.payload
+              payload: button.payload.to_s
             }
           end
 
