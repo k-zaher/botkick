@@ -2,7 +2,6 @@ module Botkick
   # Bot Starter Module
   module Manager
     def inherited(subclass)
-      subclass.instance_eval { undef :reply! }
       subclass.instance_eval { undef :start! }
     end
 
@@ -25,7 +24,7 @@ module Botkick
       raise 'NodeInvalid'
     end
 
-    def reply!(payload_string, system_data = {})
+    def self.reply!(payload_string, system_data = {})
       target_node, payload_data = Botkick::Payload.parse(payload_string)
       raise 'NodeInvalid' unless Object.const_defined?(target_node)
       klass = Object.const_get target_node
