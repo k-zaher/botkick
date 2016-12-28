@@ -8,9 +8,9 @@ module Botkick
       attr_accessor :templates, :payload_data, :system_data, :serialized_templates
 
       def initialize(system_data = {}, payload_data = nil)
-        @templates    = prepare_data
         @payload_data = payload_data
         @system_data  = system_data
+        @templates    = prepare_data
         after_prepare
       end
 
